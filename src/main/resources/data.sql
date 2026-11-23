@@ -19,7 +19,7 @@ INSERT INTO pokemon (id, name, category, description, type1, type2, height, weig
 (4, 'Charmander', 'Pokémon Lagarto', 'A chama na ponta da cauda acompanha o humor dele e mostra se ele está bem de saúde. Se ela se apagar, é o fim do Charmander.', 'fire', NULL, 0.6, 8.5, 1, TRUE, 4, NULL),
 (5, 'Charmeleon', 'Pokémon Chama', 'Quando encontra um adversário forte, fica agitado e a chama da cauda chega a ficar branco-azulada. Luta usando as garras afiadas.', 'fire', NULL, 1.1, 19, 1, FALSE, 4, 16),
 (6, 'Charizard', 'Pokémon Chama', 'Suas asas levam ele a quase 1.400 metros de altura. Cospe um fogo capaz de derreter pedras, que fica mais quente a cada batalha difícil.', 'fire', 'flying', 1.7, 90.5, 1, FALSE, 4, 36),
-(7, 'Squirtle', 'Pokémon Tartaruguinha', 'O casco arredondado ajuda a nadar bem rápido. Quando se sente em perigo, se esconde dentro dele e revida com jatos de água.', 'water', NULL, 0.5, 9, 1, TRUE, 7, NULL),
+(7, 'Squirtle', 'Pokémon Tartaruga Pequena', 'O casco arredondado ajuda a nadar bem rápido. Quando se sente em perigo, se esconde dentro dele e revida com jatos de água.', 'water', NULL, 0.5, 9, 1, TRUE, 7, NULL),
 (8, 'Wartortle', 'Pokémon Tartaruga', 'A cauda peluda é vista como símbolo de vida longa, e os mais velhos têm até algas no casco. Usa as orelhas e a cauda para se equilibrar enquanto nada.', 'water', NULL, 1, 22.5, 1, FALSE, 7, 16),
 (9, 'Blastoise', 'Pokémon Marisco', 'Os canhões do casco disparam jatos de água tão fortes que furam aço. Ele deixa o corpo pesado de propósito para aguentar o tranco dos disparos.', 'water', NULL, 1.6, 85.5, 1, FALSE, 7, 36);
 
@@ -37,10 +37,10 @@ INSERT INTO pokemon (id, name, category, description, type1, type2, height, weig
 
 -- Hoenn: os 3 iniciais e as evoluções
 INSERT INTO pokemon (id, name, category, description, type1, type2, height, weight, generation, starter, first_stage_id, evolution_level) VALUES
-(252, 'Treecko', 'Pokémon Lagartixa', 'Tem ganchinhos embaixo das patas que deixam ele subir em paredes. É calmo e nunca se assusta: se um inimigo maior encarar, ele encara de volta.', 'grass', NULL, 0.5, 5, 3, TRUE, 252, NULL),
+(252, 'Treecko', 'Pokémon Lagartixa', 'Tem pequenos ganchos embaixo das patas que deixam ele subir em paredes. É calmo e nunca se assusta: se um inimigo maior encarar, ele encara de volta.', 'grass', NULL, 0.5, 5, 3, TRUE, 252, NULL),
 (253, 'Grovyle', 'Pokémon Lagartixa', 'As folhas do corpo ajudam a se camuflar na floresta. Pula de galho em galho tão rápido que nenhum Pokémon consegue alcançá-lo.', 'grass', NULL, 0.9, 21.6, 3, FALSE, 252, 16),
 (254, 'Sceptile', 'Pokémon Floresta', 'As folhas dos braços cortam como espadas. As sementes das costas são cheias de nutrientes e ajudam as árvores da floresta a crescer.', 'grass', NULL, 1.7, 52.2, 3, FALSE, 252, 36),
-(255, 'Torchic', 'Pokémon Pintinho', 'Guarda uma chama dentro do corpo, por isso é quentinho de abraçar. Segue o treinador para todo lado com passinhos desengonçados.', 'fire', NULL, 0.4, 2.5, 3, TRUE, 255, NULL),
+(255, 'Torchic', 'Pokémon Filhote de Ave', 'Guarda uma chama dentro do corpo, então dá para sentir o calor quando você abraça ele. Segue o treinador para todo lado com passos desengonçados.', 'fire', NULL, 0.4, 2.5, 3, TRUE, 255, NULL),
 (256, 'Combusken', 'Pokémon Ave Jovem', 'Solta chamas pelo bico e dá chutes muito fortes. O grito dele é tão alto que distrai os adversários.', 'fire', 'fighting', 0.9, 19.5, 3, FALSE, 255, 16),
 (257, 'Blaziken', 'Pokémon Labareda', 'Tem pernas tão fortes que pula um prédio de 30 andares. Quanto mais forte o inimigo, mais forte queimam as chamas dos pulsos.', 'fire', 'fighting', 1.9, 52, 3, FALSE, 255, 36),
 (258, 'Mudkip', 'Pokémon Peixe da Lama', 'A barbatana da cabeça funciona como um radar e sente tudo o que acontece em volta. Respira debaixo d''água pelas guelras das bochechas.', 'water', NULL, 0.4, 7.6, 3, TRUE, 258, NULL),
@@ -49,7 +49,7 @@ INSERT INTO pokemon (id, name, category, description, type1, type2, height, weig
 
 -- Sinnoh: os 3 iniciais e as evoluções
 INSERT INTO pokemon (id, name, category, description, type1, type2, height, weight, generation, starter, first_stage_id, evolution_level) VALUES
-(387, 'Turtwig', 'Pokémon Folhinha', 'O casco é feito de terra e endurece quando ele bebe água. Se estiver com sede, a folha da cabeça murcha.', 'grass', NULL, 0.4, 10.2, 4, TRUE, 387, NULL),
+(387, 'Turtwig', 'Pokémon Folha Pequena', 'O casco é feito de terra e endurece quando ele bebe água. Se estiver com sede, a folha da cabeça murcha.', 'grass', NULL, 0.4, 10.2, 4, TRUE, 387, NULL),
 (388, 'Grotle', 'Pokémon Bosque', 'Os arbustos do casco crescem com a luz do sol. Sabe onde nasce água limpa e leva outros Pokémon até lá nas costas.', 'grass', NULL, 1.1, 97, 4, FALSE, 387, 18),
 (389, 'Torterra', 'Pokémon Continente', 'Carrega uma árvore nas costas, e Pokémon pequenos às vezes fazem ninho nela. Antigamente, as pessoas imaginavam que um Torterra gigante vivia embaixo da terra.', 'grass', 'ground', 2.2, 310, 4, FALSE, 387, 32),
 (390, 'Chimchar', 'Pokémon Chimpanzé', 'A chama da cauda é alimentada por um gás da barriga e não apaga nem na chuva. Sobe em penhascos com muita agilidade.', 'fire', NULL, 0.5, 6.2, 4, TRUE, 390, NULL),
@@ -64,7 +64,7 @@ INSERT INTO pokemon (id, name, category, description, type1, type2, height, weig
 (495, 'Snivy', 'Pokémon Cobra de Grama', 'É esperto e calmo. Faz fotossíntese tomando sol com a cauda, e quando não está bem, a cauda fica caída.', 'grass', NULL, 0.6, 8.1, 5, TRUE, 495, NULL),
 (496, 'Servine', 'Pokémon Cobra de Grama', 'Desliza pelo chão tão rápido que confunde os inimigos. Também se esconde no meio das folhas para fugir dos ataques.', 'grass', NULL, 0.8, 16, 5, FALSE, 495, 17),
 (497, 'Serperior', 'Pokémon Realeza', 'Consegue paralisar um oponente só com o olhar. Só luta de verdade contra quem não se intimida com seus olhos.', 'grass', NULL, 3.3, 63, 5, FALSE, 495, 36),
-(498, 'Tepig', 'Pokémon Porco de Fogo', 'Solta fogo pelo focinho, e quando está resfriado sai fumaça preta no lugar. Adora frutinhas assadas, mas às vezes se empolga e queima tudo.', 'fire', NULL, 0.5, 9.9, 5, TRUE, 498, NULL),
+(498, 'Tepig', 'Pokémon Porco de Fogo', 'Solta fogo pelo focinho, e quando está resfriado sai fumaça preta no lugar. Adora frutas assadas, mas às vezes se empolga e queima tudo.', 'fire', NULL, 0.5, 9.9, 5, TRUE, 498, NULL),
 (499, 'Pignite', 'Pokémon Porco de Fogo', 'Tudo o que come vira combustível para o fogo da barriga. Quando esse fogo aumenta, ele fica mais rápido e mais forte.', 'fire', 'fighting', 1, 55.5, 5, FALSE, 498, 17),
 (500, 'Emboar', 'Pokémon Porco de Fogo Gigante', 'Tem uma barba de fogo e golpes de luta rápidos e poderosos. Apesar da cara de bravo, se importa muito com os amigos.', 'fire', 'fighting', 1.6, 150, 5, FALSE, 498, 36),
 (501, 'Oshawott', 'Pokémon Lontra do Mar', 'Usa a concha da barriga como uma lâmina e revida na hora quando é atacado. Essa concha é feita do mesmo material das garras.', 'water', NULL, 0.5, 5.9, 5, TRUE, 501, NULL),
