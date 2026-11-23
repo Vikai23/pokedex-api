@@ -21,7 +21,7 @@ mvnw.cmd spring-boot:run
 ./mvnw spring-boot:run
 ```
 
-A API sobe em `http://localhost:8080`.
+A API sobe em `http://localhost:8080`. Abrindo esse endereço no navegador, você cai direto no Swagger.
 
 | Recurso | URL |
 | :-- | :-- |
@@ -98,7 +98,7 @@ Todo erro tem o mesmo formato:
 | :-- | :-- |
 | `200 OK` | Deu certo |
 | `400 Bad Request` | O id não é um número (ex: `/pokemon/abc`) |
-| `404 Not Found` | Não existe nada com esse id |
+| `404 Not Found` | Não existe nada com esse id, ou o caminho não existe (ex: `/pokemons`) |
 
 ## Colocar online (Render)
 
