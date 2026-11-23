@@ -34,7 +34,10 @@ O banco é o H2 em memória. Toda vez que a API sobe, o Hibernate cria as tabela
 
 - as 5 gerações (região, jogos, remakes, onde conseguir os iniciais e o mapa);
 - os 45 Pokémon: os 15 iniciais e as evoluções, com categoria e descrição em português, tipos, altura, peso e nível de evolução;
-- os 40 líderes de ginásio (8 por geração).
+- os 40 líderes de ginásio (8 por geração), com a posição da cidade no mapa, o sprite e a insígnia;
+- os 20 membros da Elite dos 4 (4 por geração), com o lugar da liga no mapa e o sprite.
+
+As posições no mapa (`mapX` e `mapY`, em pixels da imagem do mapa) vêm das áreas clicáveis dos mapas do Serebii.net. Os sprites dos treinadores são os do Pokémon Showdown, e as imagens das insígnias vêm do repositório `PokeAPI/sprites`. Os nomes das insígnias em português são traduções; o nome original do jogo fica em `badgeOriginalName`.
 
 Os nomes de lugares e pessoas seguem a dublagem brasileira do anime (ex: Professor Carvalho, Cidade de Pallet, Rota 24, Tenente Surge). Os nomes dos Pokémon e dos jogos ficam como no original.
 
@@ -48,7 +51,8 @@ As contas dos treinadores começam vazias e são criadas pelo app. Como o banco 
 | :-- | :-- |
 | `Generation` | Uma geração: região, jogos, remakes (fica `null` se não tiver), onde conseguir os iniciais e o mapa |
 | `Pokemon` | Um inicial ou uma evolução. `starter` diz se é inicial, `firstStageId` liga os Pokémon da mesma linha de evolução e `evolutionLevel` é o nível em que ele evolui |
-| `GymLeader` | Um líder de ginásio de uma geração, com a ordem da insígnia (`badge`) e os tipos que usa |
+| `GymLeader` | Um líder de ginásio de uma geração: ordem da insígnia (`badge`), cidade, tipos, posição no mapa, sprite e a insígnia (nome e imagem) |
+| `EliteFourMember` | Um membro da Elite dos 4: ordem do desafio (`position`), lugar da liga, tipos, posição no mapa e sprite. A de Johto fica em Kanto, então `mapX` e `mapY` vêm `null` |
 | `Trainer` | A conta de um treinador: só o nome, que não pode repetir |
 
 ## Endpoints
@@ -73,6 +77,7 @@ Todos são `GET`.
 | `/generations/{id}` | Uma geração |
 | `/generations/{id}/starters` | Os 3 iniciais da geração |
 | `/generations/{id}/gym-leaders` | Os 8 líderes de ginásio da geração |
+| `/generations/{id}/elite-four` | Os 4 membros da Elite dos 4 da geração |
 | `/pokemon` | Os 45 Pokémon |
 | `/pokemon/starters` | Os 15 iniciais |
 | `/pokemon/{id}` | Um Pokémon (o id é o número na Pokédex, ex: `1` é o Bulbasaur) |
@@ -130,7 +135,7 @@ src/main/java/com/vinicius/pokedex_api/
 ├── controller/    GenerationController, PokemonController, TrainerController e HomeController
 ├── service/       regras de busca, de criar conta e de entrar
 ├── repository/    acesso ao banco (Spring Data JPA)
-├── entity/        Generation, Pokemon, GymLeader e Trainer
+├── entity/        Generation, Pokemon, GymLeader, EliteFourMember e Trainer
 ├── dto/           ErrorResponse (corpo dos erros) e TrainerRequest (o nome enviado pelo app)
 └── exception/     ResourceNotFoundException e GlobalExceptionHandler
 src/main/resources/
