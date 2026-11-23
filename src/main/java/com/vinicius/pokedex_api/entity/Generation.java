@@ -18,6 +18,9 @@ public class Generation {
     // Jogos da geração (ex: Red, Blue e Yellow)
     private String games;
 
+    // Remakes dos jogos da região (ex: FireRed e LeafGreen). Fica null se não tiver.
+    private String remakes;
+
     // Onde conseguir os iniciais no jogo
     @Column(length = 500)
     private String starterLocation;
@@ -46,6 +49,10 @@ public class Generation {
 
     public String getGames() {
         return games;
+    }
+
+    public String getRemakes() {
+        return remakes;
     }
 
     public String getStarterLocation() {

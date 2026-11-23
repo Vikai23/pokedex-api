@@ -1,13 +1,15 @@
 -- Dados da Pokédex dos Iniciais
 -- O Spring roda este arquivo toda vez que a API sobe, depois de criar as tabelas.
 
--- As 5 gerações
-INSERT INTO generation (id, region, games, starter_location, map_url, map_width, map_height, map_visible_height, gym_games) VALUES
-(1, 'Kanto', 'Red, Blue e Yellow', 'No laboratório do Professor Oak, em Pallet Town, logo no começo do jogo. No Yellow você começa com um Pikachu e ganha os três depois: o Bulbasaur em Cerulean City, o Charmander na Route 24 e o Squirtle em Vermilion City.', 'https://www.serebii.net/pokearth/kanto.png', 200, 618, 150, 'Red, Blue e Yellow'),
-(2, 'Johto', 'Gold, Silver e Crystal', 'No laboratório do Professor Elm, em New Bark Town, logo no começo do jogo.', 'https://www.serebii.net/pokearth/johto.png', 166, 144, NULL, 'Gold, Silver e Crystal'),
-(3, 'Hoenn', 'Ruby, Sapphire e Emerald', 'Na Route 101, logo ao sair de Littleroot Town. O Professor Birch está sendo atacado por um Pokémon selvagem e você pega um dos três na bolsa dele para ajudar.', 'https://www.serebii.net/pokearth/hoenn.png', 306, 221, NULL, 'Ruby, Sapphire e Emerald'),
-(4, 'Sinnoh', 'Diamond, Pearl e Platinum', 'Na Route 201, perto do Lake Verity. Você escolhe um dos três da maleta do Professor Rowan.', 'https://www.serebii.net/pokearth/sinnoh.png', 216, 168, NULL, 'Diamond e Pearl'),
-(5, 'Unova', 'Black, White, Black 2 e White 2', 'Na sua casa, em Nuvema Town. A Professora Juniper manda uma caixa de presente com os três e você escolhe primeiro, antes do Cheren e da Bianca. No Black 2 e White 2 quem entrega é a Bianca, em Aspertia City.', 'https://www.serebii.net/pokearth/unova.png', 256, 168, NULL, 'Black e White');
+-- As 5 gerações. Os nomes de lugares e pessoas seguem a dublagem brasileira do anime
+-- (ex: Professor Carvalho, Cidade de Pallet, Rota 24).
+-- "remakes" são as versões novas dos jogos da região (a Unova ainda não tem).
+INSERT INTO generation (id, region, games, remakes, starter_location, map_url, map_width, map_height, map_visible_height, gym_games) VALUES
+(1, 'Kanto', 'Red, Blue e Yellow', 'FireRed e LeafGreen (2004) e Let''s Go, Pikachu! e Let''s Go, Eevee! (2018)', 'No laboratório do Professor Carvalho, na Cidade de Pallet, logo no começo do jogo. No Yellow você começa com um Pikachu (e no Let''s Go, com o Pikachu ou o Eevee) e ganha os três depois: o Bulbasaur na Cidade de Cerulean, o Charmander na Rota 24 e o Squirtle na Cidade de Vermilion.', 'https://www.serebii.net/pokearth/kanto.png', 200, 618, 150, 'Red, Blue e Yellow'),
+(2, 'Johto', 'Gold, Silver e Crystal', 'HeartGold e SoulSilver (2009)', 'No laboratório do Professor Elm, na Cidade de New Bark, logo no começo do jogo. No HeartGold e no SoulSilver também é assim.', 'https://www.serebii.net/pokearth/johto.png', 166, 144, NULL, 'Gold, Silver e Crystal'),
+(3, 'Hoenn', 'Ruby, Sapphire e Emerald', 'Omega Ruby e Alpha Sapphire (2014)', 'Na Rota 101, logo ao sair da Cidade de Littleroot. O Professor Birch está sendo atacado por um Pokémon selvagem e você pega um dos três na bolsa dele para ajudar. No Omega Ruby e no Alpha Sapphire acontece a mesma coisa.', 'https://www.serebii.net/pokearth/hoenn.png', 306, 221, NULL, 'Ruby, Sapphire e Emerald'),
+(4, 'Sinnoh', 'Diamond, Pearl e Platinum', 'Brilliant Diamond e Shining Pearl (2021)', 'Na Rota 201, perto do Lago Verity. Você escolhe um dos três da maleta do Professor Rowan. No Brilliant Diamond e no Shining Pearl também é assim.', 'https://www.serebii.net/pokearth/sinnoh.png', 216, 168, NULL, 'Diamond e Pearl'),
+(5, 'Unova', 'Black, White, Black 2 e White 2', NULL, 'Na sua casa, na Cidade de Nuvema. A Professora Juniper manda uma caixa de presente com os três e você escolhe primeiro, antes do Cheren e da Bianca. No Black 2 e White 2 quem entrega é a Bianca, na Cidade de Aspertia.', 'https://www.serebii.net/pokearth/unova.png', 256, 168, NULL, 'Black e White');
 
 -- Kanto: os 3 iniciais e as evoluções
 INSERT INTO pokemon (id, name, category, description, type1, type2, height, weight, generation, starter, first_stage_id, evolution_level) VALUES
@@ -71,43 +73,43 @@ INSERT INTO pokemon (id, name, category, description, type1, type2, height, weig
 
 -- Líderes de ginásio, na ordem das insígnias
 INSERT INTO gym_leader (generation, badge, name, city, types) VALUES
-(1, 1, 'Brock', 'Pewter City', 'rock'),
-(1, 2, 'Misty', 'Cerulean City', 'water'),
-(1, 3, 'Lt. Surge', 'Vermilion City', 'electric'),
-(1, 4, 'Erika', 'Celadon City', 'grass'),
-(1, 5, 'Koga', 'Fuchsia City', 'poison'),
-(1, 6, 'Sabrina', 'Saffron City', 'psychic'),
-(1, 7, 'Blaine', 'Cinnabar Island', 'fire'),
-(1, 8, 'Giovanni', 'Viridian City', 'ground'),
-(2, 1, 'Falkner', 'Violet City', 'flying'),
-(2, 2, 'Bugsy', 'Azalea Town', 'bug'),
-(2, 3, 'Whitney', 'Goldenrod City', 'normal'),
-(2, 4, 'Morty', 'Ecruteak City', 'ghost'),
-(2, 5, 'Chuck', 'Cianwood City', 'fighting'),
-(2, 6, 'Jasmine', 'Olivine City', 'steel'),
-(2, 7, 'Pryce', 'Mahogany Town', 'ice'),
-(2, 8, 'Clair', 'Blackthorn City', 'dragon'),
-(3, 1, 'Roxanne', 'Rustboro City', 'rock'),
-(3, 2, 'Brawly', 'Dewford Town', 'fighting'),
-(3, 3, 'Wattson', 'Mauville City', 'electric'),
-(3, 4, 'Flannery', 'Lavaridge Town', 'fire'),
-(3, 5, 'Norman', 'Petalburg City', 'normal'),
-(3, 6, 'Winona', 'Fortree City', 'flying'),
-(3, 7, 'Tate e Liza', 'Mossdeep City', 'psychic'),
-(3, 8, 'Wallace (Juan no Emerald)', 'Sootopolis City', 'water'),
-(4, 1, 'Roark', 'Oreburgh City', 'rock'),
-(4, 2, 'Gardenia', 'Eterna City', 'grass'),
-(4, 3, 'Maylene', 'Veilstone City', 'fighting'),
-(4, 4, 'Crasher Wake', 'Pastoria City', 'water'),
-(4, 5, 'Fantina', 'Hearthome City', 'ghost'),
-(4, 6, 'Byron', 'Canalave City', 'steel'),
-(4, 7, 'Candice', 'Snowpoint City', 'ice'),
-(4, 8, 'Volkner', 'Sunyshore City', 'electric'),
-(5, 1, 'Cilan, Chili e Cress', 'Striaton City', 'grass,fire,water'),
-(5, 2, 'Lenora', 'Nacrene City', 'normal'),
-(5, 3, 'Burgh', 'Castelia City', 'bug'),
-(5, 4, 'Elesa', 'Nimbasa City', 'electric'),
-(5, 5, 'Clay', 'Driftveil City', 'ground'),
-(5, 6, 'Skyla', 'Mistralton City', 'flying'),
-(5, 7, 'Brycen', 'Icirrus City', 'ice'),
-(5, 8, 'Drayden (Iris no White)', 'Opelucid City', 'dragon');
+(1, 1, 'Brock', 'Cidade de Pewter', 'rock'),
+(1, 2, 'Misty', 'Cidade de Cerulean', 'water'),
+(1, 3, 'Tenente Surge', 'Cidade de Vermilion', 'electric'),
+(1, 4, 'Erika', 'Cidade de Celadon', 'grass'),
+(1, 5, 'Koga', 'Cidade de Fuchsia', 'poison'),
+(1, 6, 'Sabrina', 'Cidade de Saffron', 'psychic'),
+(1, 7, 'Blaine', 'Ilha Cinnabar', 'fire'),
+(1, 8, 'Giovanni', 'Cidade de Viridian', 'ground'),
+(2, 1, 'Falkner', 'Cidade de Violet', 'flying'),
+(2, 2, 'Bugsy', 'Cidade de Azalea', 'bug'),
+(2, 3, 'Whitney', 'Cidade de Goldenrod', 'normal'),
+(2, 4, 'Morty', 'Cidade de Ecruteak', 'ghost'),
+(2, 5, 'Chuck', 'Cidade de Cianwood', 'fighting'),
+(2, 6, 'Jasmine', 'Cidade de Olivine', 'steel'),
+(2, 7, 'Pryce', 'Cidade de Mahogany', 'ice'),
+(2, 8, 'Clair', 'Cidade de Blackthorn', 'dragon'),
+(3, 1, 'Roxanne', 'Cidade de Rustboro', 'rock'),
+(3, 2, 'Brawly', 'Cidade de Dewford', 'fighting'),
+(3, 3, 'Wattson', 'Cidade de Mauville', 'electric'),
+(3, 4, 'Flannery', 'Cidade de Lavaridge', 'fire'),
+(3, 5, 'Norman', 'Cidade de Petalburg', 'normal'),
+(3, 6, 'Winona', 'Cidade de Fortree', 'flying'),
+(3, 7, 'Tate e Liza', 'Cidade de Mossdeep', 'psychic'),
+(3, 8, 'Wallace (Juan no Emerald)', 'Cidade de Sootopolis', 'water'),
+(4, 1, 'Roark', 'Cidade de Oreburgh', 'rock'),
+(4, 2, 'Gardenia', 'Cidade de Eterna', 'grass'),
+(4, 3, 'Maylene', 'Cidade de Veilstone', 'fighting'),
+(4, 4, 'Crasher Wake', 'Cidade de Pastoria', 'water'),
+(4, 5, 'Fantina', 'Cidade de Hearthome', 'ghost'),
+(4, 6, 'Byron', 'Cidade de Canalave', 'steel'),
+(4, 7, 'Candice', 'Cidade de Snowpoint', 'ice'),
+(4, 8, 'Volkner', 'Cidade de Sunyshore', 'electric'),
+(5, 1, 'Cilan, Chili e Cress', 'Cidade de Striaton', 'grass,fire,water'),
+(5, 2, 'Lenora', 'Cidade de Nacrene', 'normal'),
+(5, 3, 'Burgh', 'Cidade de Castelia', 'bug'),
+(5, 4, 'Elesa', 'Cidade de Nimbasa', 'electric'),
+(5, 5, 'Clay', 'Cidade de Driftveil', 'ground'),
+(5, 6, 'Skyla', 'Cidade de Mistralton', 'flying'),
+(5, 7, 'Brycen', 'Cidade de Icirrus', 'ice'),
+(5, 8, 'Drayden (Iris no White)', 'Cidade de Opelucid', 'dragon');

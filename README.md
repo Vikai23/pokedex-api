@@ -32,11 +32,13 @@ A API sobe em `http://localhost:8080`. Abrindo esse endereço no navegador, voc�
 
 O banco é o H2 em memória. Toda vez que a API sobe, o Hibernate cria as tabelas e o Spring carrega o arquivo [`src/main/resources/data.sql`](src/main/resources/data.sql) com:
 
-- as 5 gerações (região, jogos, onde conseguir os iniciais e o mapa);
+- as 5 gerações (região, jogos, remakes, onde conseguir os iniciais e o mapa);
 - os 45 Pokémon: os 15 iniciais e as evoluções, com categoria e descrição em português, tipos, altura, peso e nível de evolução;
 - os 40 líderes de ginásio (8 por geração).
 
-As imagens dos Pokémon são as artes oficiais que ficam no GitHub (repositório `PokeAPI/sprites`). O link é montado no campo `imageUrl` a partir do número do Pokémon.
+Os nomes de lugares e pessoas seguem a dublagem brasileira do anime (ex: Professor Carvalho, Cidade de Pallet, Rota 24, Tenente Surge). Os nomes dos Pokémon e dos jogos ficam como no original.
+
+As imagens dos Pokémon são as do estilo do Pokémon HOME, do site PokémonDB (256x256, uns 37 KB cada, bem mais leves que as artes oficiais). O link é montado no campo `imageUrl` a partir do nome do Pokémon.
 
 As contas dos treinadores começam vazias e são criadas pelo app. Como o banco é em memória, elas somem quando a API é reiniciada.
 
@@ -44,7 +46,7 @@ As contas dos treinadores começam vazias e são criadas pelo app. Como o banco 
 
 | Entidade | Descrição |
 | :-- | :-- |
-| `Generation` | Uma geração: região, jogos, onde conseguir os iniciais e o mapa |
+| `Generation` | Uma geração: região, jogos, remakes (fica `null` se não tiver), onde conseguir os iniciais e o mapa |
 | `Pokemon` | Um inicial ou uma evolução. `starter` diz se é inicial, `firstStageId` liga os Pokémon da mesma linha de evolução e `evolutionLevel` é o nível em que ele evolui |
 | `GymLeader` | Um líder de ginásio de uma geração, com a ordem da insígnia (`badge`) e os tipos que usa |
 | `Trainer` | A conta de um treinador: só o nome, que não pode repetir |
@@ -92,7 +94,7 @@ Exemplo de `GET /pokemon/4`:
   "starter": true,
   "firstStageId": 4,
   "evolutionLevel": null,
-  "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
+  "imageUrl": "https://img.pokemondb.net/sprites/home/normal/charmander.png"
 }
 ```
 
