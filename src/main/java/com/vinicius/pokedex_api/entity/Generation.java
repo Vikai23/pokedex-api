@@ -1,0 +1,74 @@
+package com.vinicius.pokedex_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+// Uma geração dos jogos (ex: a 1ª geração, da região de Kanto)
+@Entity
+public class Generation {
+
+    // Número da geração (1 a 5)
+    @Id
+    private Integer id;
+
+    // Nome da região (ex: Kanto)
+    private String region;
+
+    // Jogos da geração (ex: Red, Blue e Yellow)
+    private String games;
+
+    // Onde conseguir os iniciais no jogo
+    @Column(length = 500)
+    private String starterLocation;
+
+    // Imagem do mapa da região e o tamanho dela em pixels
+    private String mapUrl;
+    private Integer mapWidth;
+    private Integer mapHeight;
+
+    // Quanto da altura do mapa o app deve mostrar (null mostra a imagem inteira)
+    private Integer mapVisibleHeight;
+
+    // Jogos que a lista de líderes de ginásio segue
+    private String gymGames;
+
+    public Generation() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public String getGames() {
+        return games;
+    }
+
+    public String getStarterLocation() {
+        return starterLocation;
+    }
+
+    public String getMapUrl() {
+        return mapUrl;
+    }
+
+    public Integer getMapWidth() {
+        return mapWidth;
+    }
+
+    public Integer getMapHeight() {
+        return mapHeight;
+    }
+
+    public Integer getMapVisibleHeight() {
+        return mapVisibleHeight;
+    }
+
+    public String getGymGames() {
+        return gymGames;
+    }
+}
