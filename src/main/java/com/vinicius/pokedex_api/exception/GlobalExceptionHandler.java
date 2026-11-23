@@ -3,9 +3,11 @@ package com.vinicius.pokedex_api.exception;
 import com.vinicius.pokedex_api.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.LocalDateTime;
@@ -30,6 +32,18 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ErrorResponse> invalidParameter(MethodArgumentTypeMismatchException ex) {
         return build(HttpStatus.BAD_REQUEST, "Valor inválido para '" + ex.getName() + "': " + ex.getValue());
+    }
+
+    // Erros com o status escolhido no service (ex: nome vazio ou nome que já existe)
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<ErrorResponse> statusError(ResponseStatusException ex) {
+        return build(HttpStatus.valueOf(ex.getStatusCode().value()), ex.getReason());
+    }
+
+    // Corpo da requisição faltando ou com JSON errado
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> invalidBody(HttpMessageNotReadableException ex) {
+        return build(HttpStatus.BAD_REQUEST, "Envie um JSON com o nome, por exemplo: {\"name\": \"Ash\"}");
     }
 
     private ResponseEntity<ErrorResponse> build(HttpStatus status, String message) {

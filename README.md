@@ -1,6 +1,6 @@
 # pokedex-api
 
-API REST da **Pokédex dos Iniciais**, feita com Spring Boot. Guarda as 5 primeiras gerações, os 3 iniciais de cada uma com as evoluções (45 Pokémon), e os líderes de ginásio. É a API que o [app mobile](https://github.com/Vikai23/mobile) consome.
+API REST da **Pokédex dos Iniciais**, feita com Spring Boot. Guarda as 5 primeiras gerações, os 3 iniciais de cada uma com as evoluções (45 Pokémon), os líderes de ginásio e as contas dos treinadores. É a API que o [app mobile](https://github.com/Vikai23/mobile) consome.
 
 ## Tecnologias
 
@@ -38,6 +38,8 @@ O banco é o H2 em memória. Toda vez que a API sobe, o Hibernate cria as tabela
 
 As imagens dos Pokémon são as artes oficiais que ficam no GitHub (repositório `PokeAPI/sprites`). O link é montado no campo `imageUrl` a partir do número do Pokémon.
 
+As contas dos treinadores começam vazias e são criadas pelo app. Como o banco é em memória, elas somem quando a API é reiniciada.
+
 ## Modelo de dados
 
 | Entidade | Descrição |
@@ -45,8 +47,21 @@ As imagens dos Pokémon são as artes oficiais que ficam no GitHub (repositório
 | `Generation` | Uma geração: região, jogos, onde conseguir os iniciais e o mapa |
 | `Pokemon` | Um inicial ou uma evolução. `starter` diz se é inicial, `firstStageId` liga os Pokémon da mesma linha de evolução e `evolutionLevel` é o nível em que ele evolui |
 | `GymLeader` | Um líder de ginásio de uma geração, com a ordem da insígnia (`badge`) e os tipos que usa |
+| `Trainer` | A conta de um treinador: só o nome, que não pode repetir |
 
 ## Endpoints
+
+### Contas
+
+A conta tem só o nome. Para entrar, basta mandar o mesmo nome usado para criar a conta (maiúsculas e espaços nas pontas não importam).
+
+| Endpoint | O que faz |
+| :-- | :-- |
+| `GET /trainers` | Lista as contas criadas |
+| `POST /trainers` | Cria a conta. Corpo: `{"name": "Ash"}`. Devolve `201`, ou `409` se o nome já existir |
+| `POST /trainers/login` | Entra na conta. Corpo: `{"name": "Ash"}`. Devolve `200`, ou `404` se não existir conta com esse nome |
+
+### Pokédex
 
 Todos são `GET`.
 
@@ -97,8 +112,10 @@ Todo erro tem o mesmo formato:
 | Status | Quando |
 | :-- | :-- |
 | `200 OK` | Deu certo |
-| `400 Bad Request` | O id não é um número (ex: `/pokemon/abc`) |
-| `404 Not Found` | Não existe nada com esse id, ou o caminho não existe (ex: `/pokemons`) |
+| `201 Created` | Conta criada |
+| `400 Bad Request` | O id não é um número (ex: `/pokemon/abc`), o nome veio vazio ou o JSON está errado |
+| `404 Not Found` | Não existe nada com esse id, não existe conta com esse nome, ou o caminho não existe (ex: `/pokemons`) |
+| `409 Conflict` | Já existe uma conta com esse nome |
 
 ## Colocar online (Render)
 
@@ -108,11 +125,11 @@ O projeto tem `Dockerfile` e `render.yaml`. No [Render](https://render.com), cri
 
 ```
 src/main/java/com/vinicius/pokedex_api/
-├── controller/    GenerationController e PokemonController (os endpoints)
-├── service/       regras de busca e o erro 404
+├── controller/    GenerationController, PokemonController, TrainerController e HomeController
+├── service/       regras de busca, de criar conta e de entrar
 ├── repository/    acesso ao banco (Spring Data JPA)
-├── entity/        Generation, Pokemon e GymLeader
-├── dto/           ErrorResponse (corpo dos erros)
+├── entity/        Generation, Pokemon, GymLeader e Trainer
+├── dto/           ErrorResponse (corpo dos erros) e TrainerRequest (o nome enviado pelo app)
 └── exception/     ResourceNotFoundException e GlobalExceptionHandler
 src/main/resources/
 ├── application.properties
