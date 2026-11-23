@@ -8,9 +8,9 @@ import jakarta.persistence.Id;
 @Entity
 public class Pokemon {
 
-    // Pasta com as imagens oficiais dos Pokémon (ficam no GitHub)
-    private static final String IMAGE_FOLDER =
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+    // Pasta com as imagens dos Pokémon (estilo do Pokémon HOME, 256x256).
+    // São bem mais leves que as artes oficiais, então o app carrega mais rápido.
+    private static final String IMAGE_FOLDER = "https://img.pokemondb.net/sprites/home/normal/";
 
     // Número na Pokédex Nacional (ex: 1 é o Bulbasaur)
     @Id
@@ -97,9 +97,9 @@ public class Pokemon {
         return evolutionLevel;
     }
 
-    // Link da imagem oficial, montado com o número do Pokémon.
+    // Link da imagem, montado com o nome do Pokémon (ex: .../bulbasaur.png).
     // Não fica salvo no banco, mas aparece no JSON como "imageUrl".
     public String getImageUrl() {
-        return IMAGE_FOLDER + id + ".png";
+        return IMAGE_FOLDER + name.toLowerCase() + ".png";
     }
 }
