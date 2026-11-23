@@ -1,6 +1,9 @@
 package com.vinicius.pokedex_api;
 
+import com.vinicius.pokedex_api.entity.EliteFourMember;
+import com.vinicius.pokedex_api.entity.GymLeader;
 import com.vinicius.pokedex_api.entity.Pokemon;
+import com.vinicius.pokedex_api.entity.TeamPokemon;
 import com.vinicius.pokedex_api.exception.ResourceNotFoundException;
 import com.vinicius.pokedex_api.repository.EliteFourMemberRepository;
 import com.vinicius.pokedex_api.repository.GenerationRepository;
@@ -11,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -54,6 +59,27 @@ class PokedexApiApplicationTests {
 
 		assertEquals("https://img.pokemondb.net/sprites/home/normal/charmander.png", charmander.getImageUrl());
 		assertEquals("https://img.pokemondb.net/sprites/home/shiny/charmander.png", charmander.getShinyImageUrl());
+	}
+
+	// Confere se cada time ficou ligado ao treinador certo
+	@Test
+	void loadsTheTeams() {
+		List<GymLeader> kantoLeaders = gymLeaderRepository.findByGenerationOrderByBadgeAsc(1);
+
+		// Brock: Geodude no nível 12, que evolui até o Golem
+		TeamPokemon geodude = kantoLeaders.get(0).getTeam().get(0);
+		assertEquals("Geodude", geodude.getName());
+		assertEquals(12, geodude.getLevel());
+		assertEquals("Golem", geodude.getEvolutions().get(2).name());
+
+		// Sabrina: o nome "Mr. Mime" vira o arquivo "mr-mime.png"
+		TeamPokemon mrMime = kantoLeaders.get(5).getTeam().get(1);
+		assertEquals("https://img.pokemondb.net/sprites/home/normal/mr-mime.png", mrMime.getImageUrl());
+
+		// Último da lista: Marshal, da Elite dos 4 de Unova, começa com o Throh
+		EliteFourMember marshal = eliteFourMemberRepository.findByGenerationOrderByPositionAsc(5).get(3);
+		assertEquals("Marshal", marshal.getName());
+		assertEquals("Throh", marshal.getTeam().get(0).getName());
 	}
 
 	// Cria a conta e entra com o mesmo nome (maiúsculas e espaços não importam)

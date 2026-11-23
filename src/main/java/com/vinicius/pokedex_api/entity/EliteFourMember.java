@@ -2,9 +2,15 @@ package com.vinicius.pokedex_api.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+
+import java.util.List;
 
 // Um membro da Elite dos 4 de uma geração
 @Entity
@@ -39,6 +45,13 @@ public class EliteFourMember {
 
     // Sprite do treinador (imagem do Pokémon Showdown)
     private String spriteUrl;
+
+    // Time dele no jogo, na ordem da batalha (relação 1:N).
+    // EAGER: o time já vem junto quando a API busca a Elite dos 4.
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "elite_four_member_id")
+    @OrderBy("slot")
+    private List<TeamPokemon> team;
 
     public EliteFourMember() {
     }
@@ -77,5 +90,9 @@ public class EliteFourMember {
 
     public String getSpriteUrl() {
         return spriteUrl;
+    }
+
+    public List<TeamPokemon> getTeam() {
+        return team;
     }
 }

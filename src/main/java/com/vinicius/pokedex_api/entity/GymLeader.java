@@ -2,9 +2,15 @@ package com.vinicius.pokedex_api.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+
+import java.util.List;
 
 // Um líder de ginásio de uma geração
 @Entity
@@ -42,6 +48,13 @@ public class GymLeader {
     private String badgeName;
     private String badgeOriginalName;
     private String badgeImageUrl;
+
+    // Time do líder no jogo, na ordem da batalha (relação 1:N).
+    // EAGER: o time já vem junto quando a API busca os líderes.
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "gym_leader_id")
+    @OrderBy("slot")
+    private List<TeamPokemon> team;
 
     public GymLeader() {
     }
@@ -92,5 +105,9 @@ public class GymLeader {
 
     public String getBadgeImageUrl() {
         return badgeImageUrl;
+    }
+
+    public List<TeamPokemon> getTeam() {
+        return team;
     }
 }

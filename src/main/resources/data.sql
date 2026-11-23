@@ -4,12 +4,12 @@
 -- As 5 gerações. Os nomes de lugares e pessoas seguem a dublagem brasileira do anime
 -- (ex: Professor Carvalho, Cidade de Pallet, Rota 24).
 -- "remakes" são as versões novas dos jogos da região (a Unova ainda não tem).
-INSERT INTO generation (id, region, games, remakes, starter_location, map_url, map_width, map_height, map_visible_height, gym_games) VALUES
-(1, 'Kanto', 'Red, Blue e Yellow', 'FireRed e LeafGreen (2004) e Let''s Go, Pikachu! e Let''s Go, Eevee! (2018)', 'No laboratório do Professor Carvalho, na Cidade de Pallet, logo no começo do jogo. No Yellow você começa com um Pikachu (e no Let''s Go, com o Pikachu ou o Eevee) e ganha os três depois: o Bulbasaur na Cidade de Cerulean, o Charmander na Rota 24 e o Squirtle na Cidade de Vermilion.', 'https://www.serebii.net/pokearth/kanto.png', 200, 618, 150, 'Red, Blue e Yellow'),
-(2, 'Johto', 'Gold, Silver e Crystal', 'HeartGold e SoulSilver (2009)', 'No laboratório do Professor Elm, na Cidade de New Bark, logo no começo do jogo. No HeartGold e no SoulSilver também é assim.', 'https://www.serebii.net/pokearth/johto.png', 166, 144, NULL, 'Gold, Silver e Crystal'),
-(3, 'Hoenn', 'Ruby, Sapphire e Emerald', 'Omega Ruby e Alpha Sapphire (2014)', 'Na Rota 101, logo ao sair da Cidade de Littleroot. O Professor Birch está sendo atacado por um Pokémon selvagem e você pega um dos três na bolsa dele para ajudar. No Omega Ruby e no Alpha Sapphire acontece a mesma coisa.', 'https://www.serebii.net/pokearth/hoenn.png', 306, 221, NULL, 'Ruby, Sapphire e Emerald'),
-(4, 'Sinnoh', 'Diamond, Pearl e Platinum', 'Brilliant Diamond e Shining Pearl (2021)', 'Na Rota 201, perto do Lago Verity. Você escolhe um dos três da maleta do Professor Rowan. No Brilliant Diamond e no Shining Pearl também é assim.', 'https://www.serebii.net/pokearth/sinnoh.png', 216, 168, NULL, 'Diamond e Pearl'),
-(5, 'Unova', 'Black, White, Black 2 e White 2', NULL, 'Na sua casa, na Cidade de Nuvema. A Professora Juniper manda uma caixa de presente com os três e você escolhe primeiro, antes do Cheren e da Bianca. No Black 2 e White 2 quem entrega é a Bianca, na Cidade de Aspertia.', 'https://www.serebii.net/pokearth/unova.png', 256, 168, NULL, 'Black e White');
+INSERT INTO generation (id, region, games, remakes, starter_location, map_url, map_width, map_height, map_visible_height, gym_games, team_games) VALUES
+(1, 'Kanto', 'Red, Blue e Yellow', 'FireRed e LeafGreen (2004) e Let''s Go, Pikachu! e Let''s Go, Eevee! (2018)', 'No laboratório do Professor Carvalho, na Cidade de Pallet, logo no começo do jogo. No Yellow você começa com um Pikachu (e no Let''s Go, com o Pikachu ou o Eevee) e ganha os três depois: o Bulbasaur na Cidade de Cerulean, o Charmander na Rota 24 e o Squirtle na Cidade de Vermilion.', 'https://www.serebii.net/pokearth/kanto.png', 200, 618, 150, 'Red, Blue e Yellow', 'Red e Blue'),
+(2, 'Johto', 'Gold, Silver e Crystal', 'HeartGold e SoulSilver (2009)', 'No laboratório do Professor Elm, na Cidade de New Bark, logo no começo do jogo. No HeartGold e no SoulSilver também é assim.', 'https://www.serebii.net/pokearth/johto.png', 166, 144, NULL, 'Gold, Silver e Crystal', 'Gold e Silver'),
+(3, 'Hoenn', 'Ruby, Sapphire e Emerald', 'Omega Ruby e Alpha Sapphire (2014)', 'Na Rota 101, logo ao sair da Cidade de Littleroot. O Professor Birch está sendo atacado por um Pokémon selvagem e você pega um dos três na bolsa dele para ajudar. No Omega Ruby e no Alpha Sapphire acontece a mesma coisa.', 'https://www.serebii.net/pokearth/hoenn.png', 306, 221, NULL, 'Ruby, Sapphire e Emerald', 'Ruby e Sapphire'),
+(4, 'Sinnoh', 'Diamond, Pearl e Platinum', 'Brilliant Diamond e Shining Pearl (2021)', 'Na Rota 201, perto do Lago Verity. Você escolhe um dos três da maleta do Professor Rowan. No Brilliant Diamond e no Shining Pearl também é assim.', 'https://www.serebii.net/pokearth/sinnoh.png', 216, 168, NULL, 'Diamond e Pearl', 'Diamond e Pearl'),
+(5, 'Unova', 'Black, White, Black 2 e White 2', NULL, 'Na sua casa, na Cidade de Nuvema. A Professora Juniper manda uma caixa de presente com os três e você escolhe primeiro, antes do Cheren e da Bianca. No Black 2 e White 2 quem entrega é a Bianca, na Cidade de Aspertia.', 'https://www.serebii.net/pokearth/unova.png', 256, 168, NULL, 'Black e White', 'Black e White');
 
 -- Kanto: os 3 iniciais e as evoluções
 INSERT INTO pokemon (id, name, category, description, type1, type2, height, weight, generation, starter, first_stage_id, evolution_level) VALUES
@@ -138,3 +138,289 @@ INSERT INTO elite_four_member (generation, position, name, place, types, map_x, 
 (5, 2, 'Grimsley', 'Liga Pokémon de Unova', 'dark', 170, 15, 'https://play.pokemonshowdown.com/sprites/trainers/grimsley.png'),
 (5, 3, 'Caitlin', 'Liga Pokémon de Unova', 'psychic', 170, 15, 'https://play.pokemonshowdown.com/sprites/trainers/caitlin.png'),
 (5, 4, 'Marshal', 'Liga Pokémon de Unova', 'fighting', 170, 15, 'https://play.pokemonshowdown.com/sprites/trainers/marshal.png');
+
+-- Times dos líderes de ginásio e da Elite dos 4
+-- (nos jogos Red/Blue, Gold/Silver, Ruby/Sapphire, Diamond/Pearl e Black/White, fonte: PokémonDB).
+-- gym_leader_id e elite_four_member_id seguem a ordem dos INSERTs acima (1 a 40 e 1 a 20).
+-- evolution_line é a linha de evolução, só com Pokémon das 5 primeiras gerações.
+INSERT INTO team_pokemon (gym_leader_id, elite_four_member_id, slot, name, level, types, note, evolution_line) VALUES
+-- Brock
+(1, NULL, 1, 'Geodude', 12, 'rock,ground', NULL, 'Geodude,Graveler,Golem'),
+(1, NULL, 2, 'Onix', 14, 'rock,ground', NULL, 'Onix,Steelix'),
+-- Misty
+(2, NULL, 1, 'Staryu', 18, 'water', NULL, 'Staryu,Starmie'),
+(2, NULL, 2, 'Starmie', 21, 'water,psychic', NULL, 'Staryu,Starmie'),
+-- Lt. Surge
+(3, NULL, 1, 'Voltorb', 21, 'electric', NULL, 'Voltorb,Electrode'),
+(3, NULL, 2, 'Pikachu', 18, 'electric', NULL, 'Pichu,Pikachu,Raichu'),
+(3, NULL, 3, 'Raichu', 24, 'electric', NULL, 'Pichu,Pikachu,Raichu'),
+-- Erika
+(4, NULL, 1, 'Victreebel', 29, 'grass,poison', NULL, 'Bellsprout,Weepinbell,Victreebel'),
+(4, NULL, 2, 'Tangela', 24, 'grass', NULL, 'Tangela,Tangrowth'),
+(4, NULL, 3, 'Vileplume', 29, 'grass,poison', NULL, 'Oddish,Gloom,Vileplume'),
+-- Koga
+(5, NULL, 1, 'Koffing', 37, 'poison', NULL, 'Koffing,Weezing'),
+(5, NULL, 2, 'Koffing', 37, 'poison', NULL, 'Koffing,Weezing'),
+(5, NULL, 3, 'Muk', 39, 'poison', NULL, 'Grimer,Muk'),
+(5, NULL, 4, 'Weezing', 43, 'poison', NULL, 'Koffing,Weezing'),
+-- Sabrina
+(6, NULL, 1, 'Kadabra', 38, 'psychic', NULL, 'Abra,Kadabra,Alakazam'),
+(6, NULL, 2, 'Mr. Mime', 37, 'psychic,fairy', NULL, 'Mime Jr.,Mr. Mime'),
+(6, NULL, 3, 'Venomoth', 38, 'bug,poison', NULL, 'Venonat,Venomoth'),
+(6, NULL, 4, 'Alakazam', 43, 'psychic', NULL, 'Abra,Kadabra,Alakazam'),
+-- Blaine
+(7, NULL, 1, 'Growlithe', 42, 'fire', NULL, 'Growlithe,Arcanine'),
+(7, NULL, 2, 'Ponyta', 40, 'fire', NULL, 'Ponyta,Rapidash'),
+(7, NULL, 3, 'Rapidash', 42, 'fire', NULL, 'Ponyta,Rapidash'),
+(7, NULL, 4, 'Arcanine', 47, 'fire', NULL, 'Growlithe,Arcanine'),
+-- Giovanni
+(8, NULL, 1, 'Rhyhorn', 45, 'ground,rock', NULL, 'Rhyhorn,Rhydon,Rhyperior'),
+(8, NULL, 2, 'Dugtrio', 42, 'ground', NULL, 'Diglett,Dugtrio'),
+(8, NULL, 3, 'Nidoqueen', 44, 'poison,ground', NULL, 'Nidoran♀,Nidorina,Nidoqueen'),
+(8, NULL, 4, 'Nidoking', 45, 'poison,ground', NULL, 'Nidoran♂,Nidorino,Nidoking'),
+(8, NULL, 5, 'Rhydon', 50, 'ground,rock', NULL, 'Rhyhorn,Rhydon,Rhyperior'),
+-- Elite dos 4: Lorelei
+(NULL, 1, 1, 'Dewgong', 54, 'water,ice', NULL, 'Seel,Dewgong'),
+(NULL, 1, 2, 'Cloyster', 53, 'water,ice', NULL, 'Shellder,Cloyster'),
+(NULL, 1, 3, 'Slowbro', 54, 'water,psychic', NULL, 'Slowpoke,Slowbro'),
+(NULL, 1, 4, 'Jynx', 56, 'ice,psychic', NULL, 'Smoochum,Jynx'),
+(NULL, 1, 5, 'Lapras', 56, 'water,ice', NULL, 'Lapras'),
+-- Elite dos 4: Bruno
+(NULL, 2, 1, 'Onix', 53, 'rock,ground', NULL, 'Onix,Steelix'),
+(NULL, 2, 2, 'Hitmonchan', 55, 'fighting', NULL, 'Tyrogue,Hitmonchan'),
+(NULL, 2, 3, 'Hitmonlee', 55, 'fighting', NULL, 'Tyrogue,Hitmonlee'),
+(NULL, 2, 4, 'Onix', 56, 'rock,ground', NULL, 'Onix,Steelix'),
+(NULL, 2, 5, 'Machamp', 58, 'fighting', NULL, 'Machop,Machoke,Machamp'),
+-- Elite dos 4: Agatha
+(NULL, 3, 1, 'Gengar', 56, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+(NULL, 3, 2, 'Golbat', 56, 'poison,flying', NULL, 'Zubat,Golbat,Crobat'),
+(NULL, 3, 3, 'Haunter', 55, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+(NULL, 3, 4, 'Arbok', 58, 'poison', NULL, 'Ekans,Arbok'),
+(NULL, 3, 5, 'Gengar', 60, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+-- Elite dos 4: Lance
+(NULL, 4, 1, 'Gyarados', 58, 'water,flying', NULL, 'Magikarp,Gyarados'),
+(NULL, 4, 2, 'Dragonair', 56, 'dragon', NULL, 'Dratini,Dragonair,Dragonite'),
+(NULL, 4, 3, 'Dragonair', 56, 'dragon', NULL, 'Dratini,Dragonair,Dragonite'),
+(NULL, 4, 4, 'Aerodactyl', 60, 'rock,flying', NULL, 'Aerodactyl'),
+(NULL, 4, 5, 'Dragonite', 62, 'dragon,flying', NULL, 'Dratini,Dragonair,Dragonite'),
+-- Falkner
+(9, NULL, 1, 'Pidgey', 7, 'normal,flying', NULL, 'Pidgey,Pidgeotto,Pidgeot'),
+(9, NULL, 2, 'Pidgeotto', 9, 'normal,flying', NULL, 'Pidgey,Pidgeotto,Pidgeot'),
+-- Bugsy
+(10, NULL, 1, 'Metapod', 14, 'bug', NULL, 'Caterpie,Metapod,Butterfree'),
+(10, NULL, 2, 'Kakuna', 14, 'bug,poison', NULL, 'Weedle,Kakuna,Beedrill'),
+(10, NULL, 3, 'Scyther', 16, 'bug,flying', NULL, 'Scyther,Scizor'),
+-- Whitney
+(11, NULL, 1, 'Clefairy', 18, 'fairy', NULL, 'Cleffa,Clefairy,Clefable'),
+(11, NULL, 2, 'Miltank', 20, 'normal', NULL, 'Miltank'),
+-- Morty
+(12, NULL, 1, 'Gastly', 21, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+(12, NULL, 2, 'Haunter', 21, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+(12, NULL, 3, 'Haunter', 23, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+(12, NULL, 4, 'Gengar', 25, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+-- Chuck
+(13, NULL, 1, 'Primeape', 27, 'fighting', NULL, 'Mankey,Primeape'),
+(13, NULL, 2, 'Poliwrath', 30, 'water,fighting', NULL, 'Poliwag,Poliwhirl,Poliwrath'),
+-- Jasmine
+(14, NULL, 1, 'Magnemite', 30, 'electric,steel', NULL, 'Magnemite,Magneton,Magnezone'),
+(14, NULL, 2, 'Magnemite', 30, 'electric,steel', NULL, 'Magnemite,Magneton,Magnezone'),
+(14, NULL, 3, 'Steelix', 35, 'steel,ground', NULL, 'Onix,Steelix'),
+-- Pryce
+(15, NULL, 1, 'Seel', 27, 'water', NULL, 'Seel,Dewgong'),
+(15, NULL, 2, 'Dewgong', 29, 'water,ice', NULL, 'Seel,Dewgong'),
+(15, NULL, 3, 'Piloswine', 31, 'ice,ground', NULL, 'Swinub,Piloswine,Mamoswine'),
+-- Clair
+(16, NULL, 1, 'Dragonair', 37, 'dragon', NULL, 'Dratini,Dragonair,Dragonite'),
+(16, NULL, 2, 'Dragonair', 37, 'dragon', NULL, 'Dratini,Dragonair,Dragonite'),
+(16, NULL, 3, 'Dragonair', 37, 'dragon', NULL, 'Dratini,Dragonair,Dragonite'),
+(16, NULL, 4, 'Kingdra', 40, 'water,dragon', NULL, 'Horsea,Seadra,Kingdra'),
+-- Elite dos 4: Will
+(NULL, 5, 1, 'Xatu', 40, 'psychic,flying', NULL, 'Natu,Xatu'),
+(NULL, 5, 2, 'Jynx', 41, 'ice,psychic', NULL, 'Smoochum,Jynx'),
+(NULL, 5, 3, 'Slowbro', 41, 'water,psychic', NULL, 'Slowpoke,Slowbro'),
+(NULL, 5, 4, 'Exeggutor', 41, 'grass,psychic', NULL, 'Exeggcute,Exeggutor'),
+(NULL, 5, 5, 'Xatu', 42, 'psychic,flying', NULL, 'Natu,Xatu'),
+-- Elite dos 4: Koga
+(NULL, 6, 1, 'Ariados', 40, 'bug,poison', NULL, 'Spinarak,Ariados'),
+(NULL, 6, 2, 'Venomoth', 41, 'bug,poison', NULL, 'Venonat,Venomoth'),
+(NULL, 6, 3, 'Forretress', 43, 'bug,steel', NULL, 'Pineco,Forretress'),
+(NULL, 6, 4, 'Muk', 42, 'poison', NULL, 'Grimer,Muk'),
+(NULL, 6, 5, 'Crobat', 44, 'poison,flying', NULL, 'Zubat,Golbat,Crobat'),
+-- Elite dos 4: Bruno
+(NULL, 7, 1, 'Hitmontop', 42, 'fighting', NULL, 'Tyrogue,Hitmontop'),
+(NULL, 7, 2, 'Hitmonlee', 42, 'fighting', NULL, 'Tyrogue,Hitmonlee'),
+(NULL, 7, 3, 'Hitmonchan', 42, 'fighting', NULL, 'Tyrogue,Hitmonchan'),
+(NULL, 7, 4, 'Onix', 43, 'rock,ground', NULL, 'Onix,Steelix'),
+(NULL, 7, 5, 'Machamp', 46, 'fighting', NULL, 'Machop,Machoke,Machamp'),
+-- Elite dos 4: Karen
+(NULL, 8, 1, 'Umbreon', 42, 'dark', NULL, 'Eevee,Umbreon'),
+(NULL, 8, 2, 'Vileplume', 42, 'grass,poison', NULL, 'Oddish,Gloom,Vileplume'),
+(NULL, 8, 3, 'Murkrow', 44, 'dark,flying', NULL, 'Murkrow,Honchkrow'),
+(NULL, 8, 4, 'Gengar', 45, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+(NULL, 8, 5, 'Houndoom', 47, 'dark,fire', NULL, 'Houndour,Houndoom'),
+-- Roxanne
+(17, NULL, 1, 'Geodude', 14, 'rock,ground', NULL, 'Geodude,Graveler,Golem'),
+(17, NULL, 2, 'Nosepass', 15, 'rock', NULL, 'Nosepass,Probopass'),
+-- Brawly
+(18, NULL, 1, 'Machop', 17, 'fighting', NULL, 'Machop,Machoke,Machamp'),
+(18, NULL, 2, 'Makuhita', 18, 'fighting', NULL, 'Makuhita,Hariyama'),
+-- Wattson
+(19, NULL, 1, 'Magnemite', 22, 'electric,steel', NULL, 'Magnemite,Magneton,Magnezone'),
+(19, NULL, 2, 'Voltorb', 20, 'electric', NULL, 'Voltorb,Electrode'),
+(19, NULL, 3, 'Magneton', 23, 'electric,steel', NULL, 'Magnemite,Magneton,Magnezone'),
+-- Flannery
+(20, NULL, 1, 'Slugma', 26, 'fire', NULL, 'Slugma,Magcargo'),
+(20, NULL, 2, 'Slugma', 26, 'fire', NULL, 'Slugma,Magcargo'),
+(20, NULL, 3, 'Torkoal', 28, 'fire', NULL, 'Torkoal'),
+-- Norman
+(21, NULL, 1, 'Slaking', 28, 'normal', NULL, 'Slakoth,Vigoroth,Slaking'),
+(21, NULL, 2, 'Vigoroth', 30, 'normal', NULL, 'Slakoth,Vigoroth,Slaking'),
+(21, NULL, 3, 'Slaking', 31, 'normal', NULL, 'Slakoth,Vigoroth,Slaking'),
+-- Winona
+(22, NULL, 1, 'Swellow', 31, 'normal,flying', NULL, 'Taillow,Swellow'),
+(22, NULL, 2, 'Pelipper', 30, 'water,flying', NULL, 'Wingull,Pelipper'),
+(22, NULL, 3, 'Skarmory', 32, 'steel,flying', NULL, 'Skarmory'),
+(22, NULL, 4, 'Altaria', 33, 'dragon,flying', NULL, 'Swablu,Altaria'),
+-- Tate & Liza
+(23, NULL, 1, 'Lunatone', 42, 'rock,psychic', NULL, 'Lunatone'),
+(23, NULL, 2, 'Solrock', 42, 'rock,psychic', NULL, 'Solrock'),
+-- Wallace
+(24, NULL, 1, 'Luvdisc', 40, 'water', NULL, 'Luvdisc'),
+(24, NULL, 2, 'Whiscash', 42, 'water,ground', NULL, 'Barboach,Whiscash'),
+(24, NULL, 3, 'Sealeo', 40, 'ice,water', NULL, 'Spheal,Sealeo,Walrein'),
+(24, NULL, 4, 'Seaking', 42, 'water', NULL, 'Goldeen,Seaking'),
+(24, NULL, 5, 'Milotic', 43, 'water', NULL, 'Feebas,Milotic'),
+-- Elite dos 4: Sidney
+(NULL, 9, 1, 'Mightyena', 46, 'dark', NULL, 'Poochyena,Mightyena'),
+(NULL, 9, 2, 'Cacturne', 46, 'grass,dark', NULL, 'Cacnea,Cacturne'),
+(NULL, 9, 3, 'Shiftry', 48, 'grass,dark', NULL, 'Seedot,Nuzleaf,Shiftry'),
+(NULL, 9, 4, 'Sharpedo', 48, 'water,dark', NULL, 'Carvanha,Sharpedo'),
+(NULL, 9, 5, 'Absol', 49, 'dark', NULL, 'Absol'),
+-- Elite dos 4: Phoebe
+(NULL, 10, 1, 'Dusclops', 48, 'ghost', NULL, 'Duskull,Dusclops,Dusknoir'),
+(NULL, 10, 2, 'Banette', 49, 'ghost', NULL, 'Shuppet,Banette'),
+(NULL, 10, 3, 'Banette', 49, 'ghost', NULL, 'Shuppet,Banette'),
+(NULL, 10, 4, 'Sableye', 50, 'dark,ghost', NULL, 'Sableye'),
+(NULL, 10, 5, 'Dusclops', 51, 'ghost', NULL, 'Duskull,Dusclops,Dusknoir'),
+-- Elite dos 4: Glacia
+(NULL, 11, 1, 'Glalie', 50, 'ice', NULL, 'Snorunt,Glalie'),
+(NULL, 11, 2, 'Sealeo', 50, 'ice,water', NULL, 'Spheal,Sealeo,Walrein'),
+(NULL, 11, 3, 'Glalie', 52, 'ice', NULL, 'Snorunt,Glalie'),
+(NULL, 11, 4, 'Sealeo', 52, 'ice,water', NULL, 'Spheal,Sealeo,Walrein'),
+(NULL, 11, 5, 'Walrein', 53, 'ice,water', NULL, 'Spheal,Sealeo,Walrein'),
+-- Elite dos 4: Drake
+(NULL, 12, 1, 'Shelgon', 52, 'dragon', NULL, 'Bagon,Shelgon,Salamence'),
+(NULL, 12, 2, 'Altaria', 54, 'dragon,flying', NULL, 'Swablu,Altaria'),
+(NULL, 12, 3, 'Flygon', 53, 'ground,dragon', NULL, 'Trapinch,Vibrava,Flygon'),
+(NULL, 12, 4, 'Flygon', 53, 'ground,dragon', NULL, 'Trapinch,Vibrava,Flygon'),
+(NULL, 12, 5, 'Salamence', 55, 'dragon,flying', NULL, 'Bagon,Shelgon,Salamence'),
+-- Roark
+(25, NULL, 1, 'Geodude', 12, 'rock,ground', NULL, 'Geodude,Graveler,Golem'),
+(25, NULL, 2, 'Onix', 12, 'rock,ground', NULL, 'Onix,Steelix'),
+(25, NULL, 3, 'Cranidos', 14, 'rock', NULL, 'Cranidos,Rampardos'),
+-- Gardenia
+(26, NULL, 1, 'Cherubi', 19, 'grass', NULL, 'Cherubi,Cherrim'),
+(26, NULL, 2, 'Turtwig', 19, 'grass', NULL, 'Turtwig,Grotle,Torterra'),
+(26, NULL, 3, 'Roserade', 22, 'grass,poison', NULL, 'Budew,Roselia,Roserade'),
+-- Maylene
+(27, NULL, 1, 'Meditite', 27, 'fighting,psychic', NULL, 'Meditite,Medicham'),
+(27, NULL, 2, 'Machoke', 27, 'fighting', NULL, 'Machop,Machoke,Machamp'),
+(27, NULL, 3, 'Lucario', 30, 'fighting,steel', NULL, 'Riolu,Lucario'),
+-- Crasher Wake
+(28, NULL, 1, 'Gyarados', 27, 'water,flying', NULL, 'Magikarp,Gyarados'),
+(28, NULL, 2, 'Quagsire', 27, 'water,ground', NULL, 'Wooper,Quagsire'),
+(28, NULL, 3, 'Floatzel', 30, 'water', NULL, 'Buizel,Floatzel'),
+-- Fantina
+(29, NULL, 1, 'Drifblim', 32, 'ghost,flying', NULL, 'Drifloon,Drifblim'),
+(29, NULL, 2, 'Gengar', 34, 'ghost,poison', NULL, 'Gastly,Haunter,Gengar'),
+(29, NULL, 3, 'Mismagius', 36, 'ghost', NULL, 'Misdreavus,Mismagius'),
+-- Byron
+(30, NULL, 1, 'Bronzor', 36, 'steel,psychic', NULL, 'Bronzor,Bronzong'),
+(30, NULL, 2, 'Steelix', 36, 'steel,ground', NULL, 'Onix,Steelix'),
+(30, NULL, 3, 'Bastiodon', 39, 'rock,steel', NULL, 'Shieldon,Bastiodon'),
+-- Candice
+(31, NULL, 1, 'Snover', 38, 'grass,ice', NULL, 'Snover,Abomasnow'),
+(31, NULL, 2, 'Sneasel', 38, 'dark,ice', NULL, 'Sneasel,Weavile'),
+(31, NULL, 3, 'Medicham', 40, 'fighting,psychic', NULL, 'Meditite,Medicham'),
+(31, NULL, 4, 'Abomasnow', 42, 'grass,ice', NULL, 'Snover,Abomasnow'),
+-- Volkner
+(32, NULL, 1, 'Raichu', 46, 'electric', NULL, 'Pichu,Pikachu,Raichu'),
+(32, NULL, 2, 'Ambipom', 47, 'normal', NULL, 'Aipom,Ambipom'),
+(32, NULL, 3, 'Octillery', 48, 'water', NULL, 'Remoraid,Octillery'),
+(32, NULL, 4, 'Luxray', 49, 'electric', NULL, 'Shinx,Luxio,Luxray'),
+-- Elite dos 4: Aaron
+(NULL, 13, 1, 'Dustox', 53, 'bug,poison', NULL, 'Wurmple,Cascoon,Dustox'),
+(NULL, 13, 2, 'Beautifly', 53, 'bug,flying', NULL, 'Wurmple,Silcoon,Beautifly'),
+(NULL, 13, 3, 'Heracross', 54, 'bug,fighting', NULL, 'Heracross'),
+(NULL, 13, 4, 'Vespiquen', 54, 'bug,flying', NULL, 'Combee,Vespiquen'),
+(NULL, 13, 5, 'Drapion', 57, 'poison,dark', NULL, 'Skorupi,Drapion'),
+-- Elite dos 4: Bertha
+(NULL, 14, 1, 'Quagsire', 55, 'water,ground', NULL, 'Wooper,Quagsire'),
+(NULL, 14, 2, 'Whiscash', 55, 'water,ground', NULL, 'Barboach,Whiscash'),
+(NULL, 14, 3, 'Golem', 56, 'rock,ground', NULL, 'Geodude,Graveler,Golem'),
+(NULL, 14, 4, 'Sudowoodo', 57, 'rock', NULL, 'Bonsly,Sudowoodo'),
+(NULL, 14, 5, 'Hippowdon', 59, 'ground', NULL, 'Hippopotas,Hippowdon'),
+-- Elite dos 4: Flint
+(NULL, 15, 1, 'Rapidash', 58, 'fire', NULL, 'Ponyta,Rapidash'),
+(NULL, 15, 2, 'Steelix', 57, 'steel,ground', NULL, 'Onix,Steelix'),
+(NULL, 15, 3, 'Lopunny', 57, 'normal', NULL, 'Buneary,Lopunny'),
+(NULL, 15, 4, 'Drifblim', 58, 'ghost,flying', NULL, 'Drifloon,Drifblim'),
+(NULL, 15, 5, 'Infernape', 61, 'fire,fighting', NULL, 'Chimchar,Monferno,Infernape'),
+-- Elite dos 4: Lucian
+(NULL, 16, 1, 'Mr. Mime', 59, 'psychic,fairy', NULL, 'Mime Jr.,Mr. Mime'),
+(NULL, 16, 2, 'Girafarig', 59, 'normal,psychic', NULL, 'Girafarig'),
+(NULL, 16, 3, 'Medicham', 60, 'fighting,psychic', NULL, 'Meditite,Medicham'),
+(NULL, 16, 4, 'Alakazam', 60, 'psychic', NULL, 'Abra,Kadabra,Alakazam'),
+(NULL, 16, 5, 'Bronzong', 63, 'steel,psychic', NULL, 'Bronzor,Bronzong'),
+-- Cilan / Chili / Cress
+(33, NULL, 1, 'Lillipup', 12, 'normal', NULL, 'Lillipup,Herdier,Stoutland'),
+(33, NULL, 2, 'Pansage', 14, 'grass', 'Com o Cilan, se você escolheu o Oshawott', 'Pansage,Simisage'),
+(33, NULL, 3, 'Pansear', 14, 'fire', 'Com o Chili, se você escolheu o Snivy', 'Pansear,Simisear'),
+(33, NULL, 4, 'Panpour', 14, 'water', 'Com o Cress, se você escolheu o Tepig', 'Panpour,Simipour'),
+-- Lenora
+(34, NULL, 1, 'Herdier', 18, 'normal', NULL, 'Lillipup,Herdier,Stoutland'),
+(34, NULL, 2, 'Watchog', 20, 'normal', NULL, 'Patrat,Watchog'),
+-- Burgh
+(35, NULL, 1, 'Whirlipede', 21, 'bug,poison', NULL, 'Venipede,Whirlipede,Scolipede'),
+(35, NULL, 2, 'Dwebble', 21, 'bug,rock', NULL, 'Dwebble,Crustle'),
+(35, NULL, 3, 'Leavanny', 23, 'bug,grass', NULL, 'Sewaddle,Swadloon,Leavanny'),
+-- Elesa
+(36, NULL, 1, 'Emolga', 25, 'electric,flying', NULL, 'Emolga'),
+(36, NULL, 2, 'Emolga', 25, 'electric,flying', NULL, 'Emolga'),
+(36, NULL, 3, 'Zebstrika', 27, 'electric', NULL, 'Blitzle,Zebstrika'),
+-- Clay
+(37, NULL, 1, 'Krokorok', 29, 'ground,dark', NULL, 'Sandile,Krokorok,Krookodile'),
+(37, NULL, 2, 'Palpitoad', 29, 'water,ground', NULL, 'Tympole,Palpitoad,Seismitoad'),
+(37, NULL, 3, 'Excadrill', 31, 'ground,steel', NULL, 'Drilbur,Excadrill'),
+-- Skyla
+(38, NULL, 1, 'Swoobat', 33, 'psychic,flying', NULL, 'Woobat,Swoobat'),
+(38, NULL, 2, 'Unfezant', 33, 'normal,flying', NULL, 'Pidove,Tranquill,Unfezant'),
+(38, NULL, 3, 'Swanna', 35, 'water,flying', NULL, 'Ducklett,Swanna'),
+-- Brycen
+(39, NULL, 1, 'Vanillish', 37, 'ice', NULL, 'Vanillite,Vanillish,Vanilluxe'),
+(39, NULL, 2, 'Cryogonal', 37, 'ice', NULL, 'Cryogonal'),
+(39, NULL, 3, 'Beartic', 39, 'ice', NULL, 'Cubchoo,Beartic'),
+-- Drayden / Iris
+(40, NULL, 1, 'Fraxure', 41, 'dragon', NULL, 'Axew,Fraxure,Haxorus'),
+(40, NULL, 2, 'Druddigon', 41, 'dragon', NULL, 'Druddigon'),
+(40, NULL, 3, 'Haxorus', 43, 'dragon', NULL, 'Axew,Fraxure,Haxorus'),
+-- Elite dos 4: Shauntal
+(NULL, 17, 1, 'Cofagrigus', 48, 'ghost', NULL, 'Yamask,Cofagrigus'),
+(NULL, 17, 2, 'Jellicent', 48, 'water,ghost', NULL, 'Frillish,Jellicent'),
+(NULL, 17, 3, 'Golurk', 48, 'ground,ghost', NULL, 'Golett,Golurk'),
+(NULL, 17, 4, 'Chandelure', 50, 'ghost,fire', NULL, 'Litwick,Lampent,Chandelure'),
+-- Elite dos 4: Grimsley
+(NULL, 18, 1, 'Scrafty', 48, 'dark,fighting', NULL, 'Scraggy,Scrafty'),
+(NULL, 18, 2, 'Liepard', 48, 'dark', NULL, 'Purrloin,Liepard'),
+(NULL, 18, 3, 'Krookodile', 48, 'ground,dark', NULL, 'Sandile,Krokorok,Krookodile'),
+(NULL, 18, 4, 'Bisharp', 50, 'dark,steel', NULL, 'Pawniard,Bisharp'),
+-- Elite dos 4: Caitlin
+(NULL, 19, 1, 'Reuniclus', 48, 'psychic', NULL, 'Solosis,Duosion,Reuniclus'),
+(NULL, 19, 2, 'Musharna', 48, 'psychic', NULL, 'Munna,Musharna'),
+(NULL, 19, 3, 'Sigilyph', 48, 'psychic,flying', NULL, 'Sigilyph'),
+(NULL, 19, 4, 'Gothitelle', 50, 'psychic', NULL, 'Gothita,Gothorita,Gothitelle'),
+-- Elite dos 4: Marshal
+(NULL, 20, 1, 'Throh', 48, 'fighting', NULL, 'Throh'),
+(NULL, 20, 2, 'Sawk', 48, 'fighting', NULL, 'Sawk'),
+(NULL, 20, 3, 'Conkeldurr', 48, 'fighting', NULL, 'Timburr,Gurdurr,Conkeldurr'),
+(NULL, 20, 4, 'Mienshao', 50, 'fighting', NULL, 'Mienfoo,Mienshao');

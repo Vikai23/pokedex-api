@@ -36,6 +36,10 @@ public class Generation {
     // Jogos que a lista de líderes de ginásio segue
     private String gymGames;
 
+    // Jogos de onde vêm os times dos líderes e da Elite dos 4.
+    // É separado porque os times mudam nos jogos de depois (ex: no Yellow e no Emerald).
+    private String teamGames;
+
     public Generation() {
     }
 
@@ -77,5 +81,9 @@ public class Generation {
 
     public String getGymGames() {
         return gymGames;
+    }
+
+    public String getTeamGames() {
+        return teamGames;
     }
 }
