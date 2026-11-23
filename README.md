@@ -134,6 +134,8 @@ Todo erro tem o mesmo formato:
 
 O projeto tem `Dockerfile` e `render.yaml`. No [Render](https://render.com), crie um **Web Service** a partir deste repositório (runtime Docker, plano free). Depois coloque o link que o Render der no `API_URL` do app.
 
+A API está online em https://pokedex-api-p5v1.onrender.com (abre o Swagger). No plano grátis ela "dorme" depois de uns 15 minutos sem uso, e a primeira requisição depois disso demora perto de 1 minuto. Como o banco é em memória, as contas criadas somem quando ela dorme ou reinicia.
+
 ## Estrutura
 
 ```
