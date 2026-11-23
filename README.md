@@ -1,6 +1,6 @@
 # pokedex-api
 
-API REST da **Pokédex dos Iniciais**, feita com Spring Boot. Guarda as 5 primeiras gerações, os 3 iniciais de cada uma com as evoluções (45 Pokémon), e os líderes de ginásio. É a API que o app mobile consome.
+API REST da **Pokédex dos Iniciais**, feita com Spring Boot. Guarda as 5 primeiras gerações, os 3 iniciais de cada uma com as evoluções (45 Pokémon), e os líderes de ginásio. É a API que o [app mobile](https://github.com/Vikai23/mobile) consome.
 
 ## Tecnologias
 
