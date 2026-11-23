@@ -1,9 +1,11 @@
 package com.vinicius.pokedex_api.service;
 
+import com.vinicius.pokedex_api.entity.EliteFourMember;
 import com.vinicius.pokedex_api.entity.Generation;
 import com.vinicius.pokedex_api.entity.GymLeader;
 import com.vinicius.pokedex_api.entity.Pokemon;
 import com.vinicius.pokedex_api.exception.ResourceNotFoundException;
+import com.vinicius.pokedex_api.repository.EliteFourMemberRepository;
 import com.vinicius.pokedex_api.repository.GenerationRepository;
 import com.vinicius.pokedex_api.repository.GymLeaderRepository;
 import com.vinicius.pokedex_api.repository.PokemonRepository;
@@ -18,13 +20,16 @@ public class GenerationService {
     private final GenerationRepository generationRepository;
     private final PokemonRepository pokemonRepository;
     private final GymLeaderRepository gymLeaderRepository;
+    private final EliteFourMemberRepository eliteFourMemberRepository;
 
     public GenerationService(GenerationRepository generationRepository,
                              PokemonRepository pokemonRepository,
-                             GymLeaderRepository gymLeaderRepository) {
+                             GymLeaderRepository gymLeaderRepository,
+                             EliteFourMemberRepository eliteFourMemberRepository) {
         this.generationRepository = generationRepository;
         this.pokemonRepository = pokemonRepository;
         this.gymLeaderRepository = gymLeaderRepository;
+        this.eliteFourMemberRepository = eliteFourMemberRepository;
     }
 
     public List<Generation> findAll() {
@@ -45,5 +50,10 @@ public class GenerationService {
     public List<GymLeader> findGymLeaders(Integer id) {
         findById(id);
         return gymLeaderRepository.findByGenerationOrderByBadgeAsc(id);
+    }
+
+    public List<EliteFourMember> findEliteFour(Integer id) {
+        findById(id);
+        return eliteFourMemberRepository.findByGenerationOrderByPositionAsc(id);
     }
 }

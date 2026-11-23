@@ -1,6 +1,7 @@
 package com.vinicius.pokedex_api;
 
 import com.vinicius.pokedex_api.exception.ResourceNotFoundException;
+import com.vinicius.pokedex_api.repository.EliteFourMemberRepository;
 import com.vinicius.pokedex_api.repository.GenerationRepository;
 import com.vinicius.pokedex_api.repository.GymLeaderRepository;
 import com.vinicius.pokedex_api.repository.PokemonRepository;
@@ -26,6 +27,9 @@ class PokedexApiApplicationTests {
 	private GymLeaderRepository gymLeaderRepository;
 
 	@Autowired
+	private EliteFourMemberRepository eliteFourMemberRepository;
+
+	@Autowired
 	private TrainerService trainerService;
 
 	@Test
@@ -39,6 +43,7 @@ class PokedexApiApplicationTests {
 		assertEquals(45, pokemonRepository.count());
 		assertEquals(15, pokemonRepository.findByStarterTrueOrderByIdAsc().size());
 		assertEquals(40, gymLeaderRepository.count());
+		assertEquals(20, eliteFourMemberRepository.count());
 	}
 
 	// Cria a conta e entra com o mesmo nome (maiúsculas e espaços não importam)

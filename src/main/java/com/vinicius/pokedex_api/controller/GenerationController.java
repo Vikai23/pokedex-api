@@ -1,5 +1,6 @@
 package com.vinicius.pokedex_api.controller;
 
+import com.vinicius.pokedex_api.entity.EliteFourMember;
 import com.vinicius.pokedex_api.entity.Generation;
 import com.vinicius.pokedex_api.entity.GymLeader;
 import com.vinicius.pokedex_api.entity.Pokemon;
@@ -47,5 +48,11 @@ public class GenerationController {
     @GetMapping("/{id}/gym-leaders")
     public ResponseEntity<List<GymLeader>> findGymLeaders(@PathVariable Integer id) {
         return ResponseEntity.ok(generationService.findGymLeaders(id));
+    }
+
+    // GET /generations/1/elite-four: os 4 membros da Elite dos 4 da geração
+    @GetMapping("/{id}/elite-four")
+    public ResponseEntity<List<EliteFourMember>> findEliteFour(@PathVariable Integer id) {
+        return ResponseEntity.ok(generationService.findEliteFour(id));
     }
 }
