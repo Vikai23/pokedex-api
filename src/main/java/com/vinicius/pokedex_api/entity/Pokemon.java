@@ -12,6 +12,9 @@ public class Pokemon {
     // São bem mais leves que as artes oficiais, então o app carrega mais rápido.
     private static final String IMAGE_FOLDER = "https://img.pokemondb.net/sprites/home/normal/";
 
+    // Mesma coisa, mas com a versão shiny (a cor rara do Pokémon)
+    private static final String SHINY_IMAGE_FOLDER = "https://img.pokemondb.net/sprites/home/shiny/";
+
     // Número na Pokédex Nacional (ex: 1 é o Bulbasaur)
     @Id
     private Integer id;
@@ -101,5 +104,11 @@ public class Pokemon {
     // Não fica salvo no banco, mas aparece no JSON como "imageUrl".
     public String getImageUrl() {
         return IMAGE_FOLDER + name.toLowerCase() + ".png";
+    }
+
+    // Link da imagem shiny, montado do mesmo jeito.
+    // Aparece no JSON como "shinyImageUrl".
+    public String getShinyImageUrl() {
+        return SHINY_IMAGE_FOLDER + name.toLowerCase() + ".png";
     }
 }

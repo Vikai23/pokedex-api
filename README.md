@@ -41,7 +41,7 @@ As posições no mapa (`mapX` e `mapY`, em pixels da imagem do mapa) vêm das á
 
 Os nomes de lugares e pessoas seguem a dublagem brasileira do anime (ex: Professor Carvalho, Cidade de Pallet, Rota 24, Tenente Surge). Os nomes dos Pokémon e dos jogos ficam como no original.
 
-As imagens dos Pokémon são as do estilo do Pokémon HOME, do site PokémonDB (256x256, uns 37 KB cada, bem mais leves que as artes oficiais). O link é montado no campo `imageUrl` a partir do nome do Pokémon.
+As imagens dos Pokémon são as do estilo do Pokémon HOME, do site PokémonDB (256x256, uns 37 KB cada, bem mais leves que as artes oficiais). O link é montado no campo `imageUrl` a partir do nome do Pokémon, e o da versão shiny (a cor rara) fica em `shinyImageUrl`.
 
 As contas dos treinadores começam vazias e são criadas pelo app. Como o banco é em memória, elas somem quando a API é reiniciada.
 
@@ -99,7 +99,8 @@ Exemplo de `GET /pokemon/4`:
   "starter": true,
   "firstStageId": 4,
   "evolutionLevel": null,
-  "imageUrl": "https://img.pokemondb.net/sprites/home/normal/charmander.png"
+  "imageUrl": "https://img.pokemondb.net/sprites/home/normal/charmander.png",
+  "shinyImageUrl": "https://img.pokemondb.net/sprites/home/shiny/charmander.png"
 }
 ```
 

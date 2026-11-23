@@ -1,5 +1,6 @@
 package com.vinicius.pokedex_api;
 
+import com.vinicius.pokedex_api.entity.Pokemon;
 import com.vinicius.pokedex_api.exception.ResourceNotFoundException;
 import com.vinicius.pokedex_api.repository.EliteFourMemberRepository;
 import com.vinicius.pokedex_api.repository.GenerationRepository;
@@ -44,6 +45,15 @@ class PokedexApiApplicationTests {
 		assertEquals(15, pokemonRepository.findByStarterTrueOrderByIdAsc().size());
 		assertEquals(40, gymLeaderRepository.count());
 		assertEquals(20, eliteFourMemberRepository.count());
+	}
+
+	// Confere os links das imagens normal e shiny
+	@Test
+	void buildsImageLinks() {
+		Pokemon charmander = pokemonRepository.findById(4).orElseThrow();
+
+		assertEquals("https://img.pokemondb.net/sprites/home/normal/charmander.png", charmander.getImageUrl());
+		assertEquals("https://img.pokemondb.net/sprites/home/shiny/charmander.png", charmander.getShinyImageUrl());
 	}
 
 	// Cria a conta e entra com o mesmo nome (maiúsculas e espaços não importam)
