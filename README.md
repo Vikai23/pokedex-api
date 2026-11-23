@@ -44,7 +44,7 @@ Os times são os do primeiro jogo de cada geração (Red/Blue, Gold/Silver, Ruby
 
 Os nomes de lugares e pessoas seguem a dublagem brasileira do anime (ex: Professor Carvalho, Cidade de Pallet, Rota 24, Tenente Surge). Os nomes dos Pokémon e dos jogos ficam como no original.
 
-As imagens dos Pokémon são as do estilo do Pokémon HOME, do site PokémonDB (256x256, uns 37 KB cada, bem mais leves que as artes oficiais). O link é montado no campo `imageUrl` a partir do nome do Pokémon, e o da versão shiny (a cor rara) fica em `shinyImageUrl`.
+As imagens dos Pokémon são as do estilo do Pokémon HOME, do site PokémonDB (256x256, uns 37 KB cada, bem mais leves que as artes oficiais). O link é montado no campo `imageUrl` a partir do nome do Pokémon, e o da versão shiny (a cor rara) fica em `shinyImageUrl`. O grito (o som que o Pokémon faz) fica em `cryUrl`, um mp3 do Pokémon Showdown.
 
 As contas dos treinadores começam vazias e são criadas pelo app. Como o banco é em memória, elas somem quando a API é reiniciada.
 
@@ -104,7 +104,8 @@ Exemplo de `GET /pokemon/4`:
   "firstStageId": 4,
   "evolutionLevel": null,
   "imageUrl": "https://img.pokemondb.net/sprites/home/normal/charmander.png",
-  "shinyImageUrl": "https://img.pokemondb.net/sprites/home/shiny/charmander.png"
+  "shinyImageUrl": "https://img.pokemondb.net/sprites/home/shiny/charmander.png",
+  "cryUrl": "https://play.pokemonshowdown.com/audio/cries/charmander.mp3"
 }
 ```
 

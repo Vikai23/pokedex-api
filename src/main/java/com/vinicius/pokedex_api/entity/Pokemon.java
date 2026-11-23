@@ -15,6 +15,9 @@ public class Pokemon {
     // Mesma coisa, mas com a versão shiny (a cor rara do Pokémon)
     private static final String SHINY_IMAGE_FOLDER = "https://img.pokemondb.net/sprites/home/shiny/";
 
+    // Pasta com o grito (cry) de cada Pokémon, em mp3, do Pokémon Showdown
+    private static final String CRY_FOLDER = "https://play.pokemonshowdown.com/audio/cries/";
+
     // Número na Pokédex Nacional (ex: 1 é o Bulbasaur)
     @Id
     private Integer id;
@@ -110,5 +113,11 @@ public class Pokemon {
     // Aparece no JSON como "shinyImageUrl".
     public String getShinyImageUrl() {
         return SHINY_IMAGE_FOLDER + name.toLowerCase() + ".png";
+    }
+
+    // Link do som que o Pokémon faz (ex: .../bulbasaur.mp3).
+    // Aparece no JSON como "cryUrl".
+    public String getCryUrl() {
+        return CRY_FOLDER + name.toLowerCase() + ".mp3";
     }
 }

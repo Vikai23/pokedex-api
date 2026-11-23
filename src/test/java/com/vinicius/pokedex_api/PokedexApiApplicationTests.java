@@ -52,13 +52,14 @@ class PokedexApiApplicationTests {
 		assertEquals(20, eliteFourMemberRepository.count());
 	}
 
-	// Confere os links das imagens normal e shiny
+	// Confere os links das imagens normal e shiny e do grito
 	@Test
 	void buildsImageLinks() {
 		Pokemon charmander = pokemonRepository.findById(4).orElseThrow();
 
 		assertEquals("https://img.pokemondb.net/sprites/home/normal/charmander.png", charmander.getImageUrl());
 		assertEquals("https://img.pokemondb.net/sprites/home/shiny/charmander.png", charmander.getShinyImageUrl());
+		assertEquals("https://play.pokemonshowdown.com/audio/cries/charmander.mp3", charmander.getCryUrl());
 	}
 
 	// Confere se cada time ficou ligado ao treinador certo
